@@ -90,7 +90,9 @@ android.support.v4.widget.SwipeRefreshLayout swiperefresh = null;
         ObjectAnimator.ofInt(scrollView, "scrollY",  5).setDuration(5).start();
 
         allBusinesses = (ListView) rootView.findViewById(R.id.allBusinesses);
+/*
         noElement = (TextView) rootView.findViewById(R.id.noElement);
+*/
 
            /* swiperefresh.setOnRefreshListener(
                     new SwipeRefreshLayout.OnRefreshListener() {
@@ -190,7 +192,7 @@ android.support.v4.widget.SwipeRefreshLayout swiperefresh = null;
 
                 if (!hasValues) {
                     //no businesses were found
-                    noElement.setText("No businesses were found near you");
+//                    noElement.setText("No businesses were found near you");
                 } else {
                     BusinessAdapter adapter = new BusinessAdapter(getActivity(), myBusinesses);
                     allBusinesses.setAdapter(adapter);
@@ -206,7 +208,7 @@ android.support.v4.widget.SwipeRefreshLayout swiperefresh = null;
                             startActivity(intent);
                         }
                     });
-                    noElement.setText("");
+//                    noElement.setText("");
 
                 }
             } catch (Exception t) {

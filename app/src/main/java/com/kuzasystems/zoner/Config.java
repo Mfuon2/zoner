@@ -18,6 +18,7 @@ public class Config {
         return this.dbVersion;
     }
     public static String url = "https://www.kuzasystems.com/zoner/";
+    //public static String url = "http://192.168.10.39/";
 // AddUser.php
 public static int getMyUserId(Context context){
     int userId= 0;

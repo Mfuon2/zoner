@@ -63,7 +63,7 @@ public class FavouritesFragment extends Fragment {
             /*swiperefresh = (android.support.v4.widget.SwipeRefreshLayout) rootView.findViewById(R.id.refresh);
             swiperefresh.setRefreshing(true);*/
             allBusinesses = (ListView) rootView.findViewById(R.id.allBusinesses);
-            noElement = (TextView) rootView.findViewById(R.id.noElement);
+//            noElement = (TextView) rootView.findViewById(R.id.noElement);
 
 
 
@@ -111,7 +111,7 @@ public class FavouritesFragment extends Fragment {
 
                             int length = response.length();
                             if(length==0) {
-                                noElement.setText("You have not added any business as a favourite");
+                               // noElement.setText("You have not added any business as a favourite");
                             }else {
                                 final List<Users> myBusinesses = new ArrayList<>();
                                 for (int a = 0; a < length; a++) {
@@ -160,7 +160,7 @@ public class FavouritesFragment extends Fragment {
                                         startActivity(intent);
                                     }
                                 });
-                                noElement.setText("");
+                               // noElement.setText("");
                             }
                         }
                     },

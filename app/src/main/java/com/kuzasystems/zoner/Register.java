@@ -293,7 +293,7 @@ Switch viewSwitch;
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.cancel();
-                    Toast.makeText(Register.this, "" + error, Toast.LENGTH_SHORT).show();
+                    Util.getBuilderWithOneControl(Register.this,"Check your Internet Connection");
 
                 }
             }) {

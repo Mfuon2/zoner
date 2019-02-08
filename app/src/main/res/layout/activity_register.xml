@@ -326,6 +326,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@drawable/user"
+
+                                android:fontFamily="@font/andika"
                                 android:hint="Name"
                                 android:inputType="textPersonName" />
 
@@ -334,6 +336,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@drawable/phone"
+
+                                android:fontFamily="@font/andika"
                                 android:hint="Phone Number"
                                 android:inputType="phone" />
 
@@ -342,6 +346,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@drawable/envelope"
+
+                                android:fontFamily="@font/andika"
                                 android:hint="Email Address"
                                 android:inputType="textEmailAddress" />
 
@@ -349,6 +355,8 @@
                                 android:id="@+id/individualUsername"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
+                                android:fontFamily="@font/andika"
                                 android:drawableLeft="@drawable/user"
                                 android:hint="Username"
                                 android:inputType="text" />
@@ -363,6 +371,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:drawableStart="@drawable/lock"
+
+                                    android:fontFamily="@font/andika"
                                     android:drawableLeft="@drawable/lock"
                                     android:hint="Password"
                                     android:inputType="textPassword" />
@@ -378,6 +388,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:drawableStart="@drawable/lock"
+
+                                    android:fontFamily="@font/andika"
                                     android:drawableLeft="@drawable/lock"
                                     android:hint="Confirm Password"
                                     android:inputType="textPassword" />

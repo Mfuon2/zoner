@@ -169,7 +169,7 @@ public class Settings extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
 
-                    Toast.makeText(Settings.this, response, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Settings.this, "Username Update was successful", Toast.LENGTH_LONG).show();
                     progress.hide();
                 }
             }, new Response.ErrorListener() {
