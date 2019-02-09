@@ -284,7 +284,8 @@ public class BusinessHomeActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onResponse(String response) {
-                snackBarView.setBackgroundColor(Color.GREEN);
+                /*
+                snackBarView.setBackgroundColor(Color.GREEN);*/
                 snackStatus.setText(response);
 
             }
