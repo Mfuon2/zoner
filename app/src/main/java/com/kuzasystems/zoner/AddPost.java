@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +22,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -63,7 +66,7 @@ Button chooseImage;
                 builder//.setTitle("Delete entry")
                         //.setView(R.layout.logochoices)
                         .setMessage("From where would you like to get the post image?")
-                        .setNeutralButton("Galary", new DialogInterface.OnClickListener() {
+                        .setNeutralButton("Gallery", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 /*Intent cameraintent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -108,7 +111,7 @@ Button chooseImage;
                 builder//.setTitle("Delete entry")
                         //.setView(R.layout.logochoices)
                         .setMessage("From where would you like to get the post image?")
-                        .setNeutralButton("Galary", new DialogInterface.OnClickListener() {
+                        .setNeutralButton("Gallery", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 /*Intent cameraintent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -152,12 +155,14 @@ Button chooseImage;
                     if (resultCode == Activity.RESULT_OK) {
                         if (data != null) {
                             selectedImage = data.getData(); // the uri of the image taken
+
                             if (String.valueOf((Bitmap) data.getExtras().get("data")).equals("null")) {
                                 bitmap = MediaStore.Images.Media.getBitmap(AddPost.this.getContentResolver(), selectedImage);
                             } else {
                                 bitmap = (Bitmap) data.getExtras().get("data");
                             }
 
+                            Log.w("HERE ********** ", "****** URI ****** : " + bitmap.toString() );
 
                             bitmapRotate = bitmap;
                             PostImage.setImageBitmap(bitmap);
@@ -183,6 +188,7 @@ Button chooseImage;
                     if (resultCode == Activity.RESULT_OK) {
                         if (data != null) {
                             Uri uri = data.getData();
+                            Log.w("HERE ********** ", "****** URI ****** : " + uri.toString() );
 
                             try {
                                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(AddPost.this.getContentResolver(), uri);
@@ -203,7 +209,7 @@ Button chooseImage;
     public String getStringImage(Bitmap bitmap){
 
         ByteArrayOutputStream baos=new  ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100, baos);
         byte [] b=baos.toByteArray();
         String temp= Base64.encodeToString(b, Base64.DEFAULT);
 
@@ -252,20 +258,6 @@ Button chooseImage;
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.cancel();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(AddPost.this);
-                    //   }
-                    builder.setTitle("Response")
-                            .setMessage("***** " + error)
-                            .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                   /* Intent intent = new Intent(AddPost.this, SplashActivity.class);
-                                    startActivity(intent);*/
-                                }
-                            })
-
-                            .show();
-                    Toast.makeText(AddPost.this, "We encountered an error while adding your post. Please try again" + error , Toast.LENGTH_SHORT).show();
-
                 }
             }) {
                 @Override
@@ -295,7 +287,6 @@ Button chooseImage;
                     return param;
                 }
             };
-
             requestQueue.add(stringRequest);
         }
     } catch (NullPointerException t) {

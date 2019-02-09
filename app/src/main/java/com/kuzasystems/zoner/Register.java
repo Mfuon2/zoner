@@ -142,7 +142,7 @@ Switch viewSwitch;
                 builder//.setTitle("Delete entry")
                         //.setView(R.layout.logochoices)
                         .setMessage("From where would you like to get the logo?")
-                        .setNeutralButton("Galary", new DialogInterface.OnClickListener() {
+                        .setNeutralButton("Gallery", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent();
                                 intent.setType("image/*");

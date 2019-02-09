@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -80,8 +81,25 @@ public class CustomerHomeActivity extends AppCompatActivity {
         latitude = bundle.get("latitude").toString();
         longitude = bundle.get("longitude").toString();
         //end
+
+        FloatingActionButton fab_refresh = findViewById(R.id.refresh_business);
+
+        fab_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+                startActivity(intent);
+            }
+        });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            finishAffinity();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -91,7 +91,6 @@ public class BusinessHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = getIntent();
-                finish();
                 startActivity(intent);
             }
         });

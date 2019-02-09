@@ -41,31 +41,35 @@
         android:layout_marginBottom="100dp"
         />
 
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="45dp"
+        android:layout_gravity="end|bottom"
+        android:layout_height="wrap_content">
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/refresh_business"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start|bottom"
-            android:layout_margin="@dimen/fab_margin"/>
+            app:srcCompat="@drawable/quantum_ic_replay_10_white_24"
+            android:layout_margin="@dimen/fab_margin" />
 
-    <TextView
-        android:layout_width="113dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:elevation="16dp"
-        android:text="Refresh"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white"
-        app:layout_anchor="@+id/refresh_business"
-        app:layout_anchorGravity="right|center" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/add" />
+            app:srcCompat="@drawable/add"
+            tools:ignore="VectorDrawableCompat" />
+
+
+    </LinearLayout>
+
+
 
 
 

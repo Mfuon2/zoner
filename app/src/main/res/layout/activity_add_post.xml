@@ -27,9 +27,9 @@
 
                 <ImageView
                     android:id="@+id/PostImage"
-                    android:layout_width="334dp"
-                    android:layout_height="310dp"
-                    android:background="@drawable/camera"
+                    android:layout_width="185dp"
+                    android:layout_height="176dp"
+                    android:src="@drawable/camera"
                     android:contentDescription="TODO" />
 
                 <Button

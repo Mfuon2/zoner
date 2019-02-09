@@ -41,5 +41,22 @@
         />
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="45dp"
+        android:layout_gravity="end|bottom"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/refresh_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/quantum_ic_replay_10_white_24"
+            android:layout_margin="@dimen/fab_margin" />
+
+
+    </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>
