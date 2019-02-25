@@ -85,7 +85,6 @@ public class Settings extends AppCompatActivity {
                     myUsername = cursor.getString(cursor.getColumnIndex("Username"));
                     myPassword = cursor.getString(cursor.getColumnIndex("Password"));
                     //loggedIn = true;
-
                 }
                 cursor.close();
             } catch (Exception e) {

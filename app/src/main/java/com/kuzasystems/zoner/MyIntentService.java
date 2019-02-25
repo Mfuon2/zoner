@@ -214,7 +214,7 @@ public class MyIntentService extends IntentService {
                 if(nMessages==1) {
                     NotificationCompat.Builder builder =
                             new NotificationCompat.Builder(this)
-                                    .setSmallIcon(R.drawable.marker)
+                                    .setSmallIcon(R.mipmap.zoner_notification_ic)
                                     .setContentTitle(senderName)
                                     .setContentText(message);
                     Intent targetIntent = new Intent(this, SplashActivity.class);
@@ -226,7 +226,7 @@ public class MyIntentService extends IntentService {
                 }else if(nMessages>1){
                     NotificationCompat.Builder builder =
                             new NotificationCompat.Builder(this)
-                                    .setSmallIcon(R.drawable.marker)
+                                    .setSmallIcon(R.mipmap.zoner_notification_ic)
                                     .setContentTitle("You Have Unread Messages")
                                     .setContentText("You have "+nMessages+" unread messages");
                     Intent targetIntent = new Intent(this, SplashActivity.class);
