@@ -18,9 +18,9 @@
 
         android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/zoner"
+        android:icon="@mipmap/zoner_ic"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/zoner"
+        android:roundIcon="@mipmap/zoner_ic"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">

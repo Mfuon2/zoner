@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="213dp"
             android:layout_marginTop="70dp"
-            android:src="@mipmap/zoner" />
+            android:src="@mipmap/zoner_ic" />
     </LinearLayout>
 
 
