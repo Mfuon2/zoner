@@ -17,7 +17,7 @@ public class Util {
 
                     }
                 })
-                .setIcon(R.mipmap.zoner)
+                .setIcon(R.mipmap.zoner_notification_ic)
                 .show();
     }
 }

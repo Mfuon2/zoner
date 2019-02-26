@@ -32,9 +32,11 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -472,7 +474,7 @@ Switch viewSwitch;
                                     public void onClick(DialogInterface dialog, int which) {
                                     }
                                 })
-                                .setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent(Register.this, LoginActivity.class);
                                         startActivity(intent);
@@ -515,9 +517,12 @@ Switch viewSwitch;
                     }
                 };
 
+
+                int socketTimeout = 30000;//30 seconds - change to what you want
+                RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest.setRetryPolicy(policy);
+
                 requestQueue.add(stringRequest);
-
-
 
 
                 //

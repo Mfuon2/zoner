@@ -2,6 +2,7 @@ package com.kuzasystems.zoner;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,12 +14,26 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -30,6 +45,7 @@ public class SplashActivity extends AppCompatActivity {
             android.Manifest.permission.ACCESS_COARSE_LOCATION
     };
     private static Location mLastLocation;
+    public boolean type = false;
     double latitude, longitude;
     private FusedLocationProviderClient mFusedLocationClient;
 
@@ -139,6 +155,7 @@ public class SplashActivity extends AppCompatActivity {
                         if (!error) {
                             //check if logged in
                             Boolean loggedIn = false;
+                            String username = null;
                             int userType = 0;
                             try {
                                 SQLiteDatabase sqlDb = new ZonerDB(SplashActivity.this).getWritableDatabase();
@@ -148,12 +165,16 @@ public class SplashActivity extends AppCompatActivity {
                                     //  password = cursor.getString(cursor.getColumnIndex("password")) ;
                                     loggedIn = true;
                                     userType = cursor.getInt(cursor.getColumnIndex("Usertype"));
+                                    username = cursor.getString(cursor.getColumnIndex("Username"));
+
                                 }
                                 cursor.close();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+
                             if (loggedIn) {
+
                                 if (userType == 0) {//business
                                     //logged in as business, take to business screen
                                     Intent intent = new Intent(SplashActivity.this, BusinessHomeActivity.class);
@@ -174,17 +195,21 @@ public class SplashActivity extends AppCompatActivity {
                                     finish();
                                 }
                             } else {
-                                //not logged in, take to login screen
-                                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
+
+                        } else {
+                            //not logged in, take to login screen
+                            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     }
                 }
-
-
             }
+
         };
         thread.start();
         //try getting my location
