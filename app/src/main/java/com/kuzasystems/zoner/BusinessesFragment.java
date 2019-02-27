@@ -13,11 +13,13 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +87,7 @@ android.support.v4.widget.SwipeRefreshLayout swiperefresh = null;
         View rootView = inflater.inflate(R.layout.businesslist, container, false);
         /*swiperefresh = (android.support.v4.widget.SwipeRefreshLayout) rootView.findViewById(R.id.refresh);
         swiperefresh.setRefreshing(true);*/
-        ScrollView scrollView = rootView.findViewById(R.id.scroller);
+        ConstraintLayout scrollView = (ConstraintLayout) rootView.findViewById(R.id.scroller);
 
         ObjectAnimator.ofInt(scrollView, "scrollY",  5).setDuration(5).start();
 
@@ -115,11 +117,14 @@ android.support.v4.widget.SwipeRefreshLayout swiperefresh = null;
                 JSONArray requestArray = new JSONArray();
                 JSONObject object = new JSONObject();
 
+                Log.wtf(" *** BUSINESS LOCATION *** " , " LAT " + latitude + " LONG " + longitude);
+
 
                 JsonArrayRequest postRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                         new Response.Listener<JSONArray>() {
                             @Override
                             public void onResponse(JSONArray response) {
+                                Log.wtf(" *****YIKS***** " ," **** " +response.toString());
 
                                 SQLiteDatabase sqlDb = new ZonerDB(getActivity()).getWritableDatabase();
                                 //check if exists

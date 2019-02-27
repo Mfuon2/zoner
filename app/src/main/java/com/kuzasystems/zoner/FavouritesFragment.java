@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,6 +98,7 @@ public class FavouritesFragment extends Fragment {
         //swiperefresh.setRefreshing(true);
         try {
             RequestQueue queue = Volley.newRequestQueue(getActivity());
+            Log.wtf("**** FEVORITE ***** " , " FEVO " + username + "  pass " + userPassword);
             final String url = Config.url + "getFavourites.php?username="+username+"&password="+userPassword;
             JSONArray requestArray = new JSONArray();
             JSONObject object = new JSONObject();
@@ -107,7 +109,7 @@ public class FavouritesFragment extends Fragment {
                         @Override
                         public void onResponse(JSONArray response) {
 
-
+                            Log.wtf("**** FEVORITE ***** " , " FEVO " + response.toString());
 
                             int length = response.length();
                             if(length==0) {
