@@ -336,7 +336,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         progressDialog.setTitle("Confirming");
         progressDialog.setMessage("Checking Payment status...");
         progressDialog.show();
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.url + "ConfirmPayment.php", new Response.Listener<String>() {
             @Override
@@ -351,7 +351,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     //wrong username or password
                     AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
                     dialog.setTitle("Subscription Expired");
-                    dialog.setMessage("Please proceed to make a payment of 100 KES to  \n Till No: 823784 \n to renew your Subscription");
+                    dialog.setMessage("Please proceed to make a payment of 100 KES to  \n Till No: 823874 \n to renew your Subscription");
                     dialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
 
                         @Override
@@ -371,7 +371,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.cancel();
-                Toast.makeText(getApplicationContext(), "" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "" + error, Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
